@@ -62,3 +62,16 @@ Start with a single developer, iterate with PRs for features or styling.
 License
 -------
 Project is small and permissively licensed by default; add a license file when ready.
+
+Testing
+-------
+This project includes a small Jest test suite that validates the `evaluate()` implementation (operator precedence, functions, decimals, modulo, exponent associativity, and division-by-zero handling).
+
+Run the tests locally:
+
+```bash
+npm install
+npm test
+```
+
+The tests are located in the `tests/` directory and run under the `jsdom` environment so the calculator UI elements are created before the script is loaded.
