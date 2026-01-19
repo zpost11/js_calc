@@ -69,9 +69,21 @@ This project includes a small Jest test suite that validates the `evaluate()` im
 
 Run the tests locally:
 
+**Bash / Linux / macOS:**
 ```bash
 npm install
 npm test
+```
+
+**Windows PowerShell:**
+```powershell
+npm install
+npm test
+```
+
+Or using `npx` directly:
+```powershell
+npx jest
 ```
 
 The tests are located in the `tests/` directory and run under the `jsdom` environment so the calculator UI elements are created before the script is loaded.

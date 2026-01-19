@@ -94,20 +94,20 @@
   let memory = 0;
 
   function update(){
-    displayEl.textContent = expr || '0';
+    if(displayEl) displayEl.textContent = expr || '0';
   }
 
-  keys.addEventListener('click', (ev)=>{
+  if(keys) keys.addEventListener('click', (ev)=>{
     const btn = ev.target.closest('button'); if(!btn) return;
     const v = btn.getAttribute('data-value');
     const action = btn.getAttribute('data-action');
     if(v){ expr += v; update(); return }
     if(action){
       switch(action){
-        case 'clear': expr=''; historyEl.textContent=''; update(); break;
+        case 'clear': expr=''; if(historyEl) historyEl.textContent=''; update(); break;
         case 'back': expr = expr.slice(0,-1); update(); break;
         case 'equals':
-          historyEl.textContent = expr;
+          if(historyEl) historyEl.textContent = expr;
           const res = evaluate(expr);
           expr = (typeof res === 'number') ? String(res) : res;
           update();
@@ -136,12 +136,12 @@
     if(e.key.match(/[0-9\.\+\-\*\/\^\%\(\)]/)){
       expr += e.key; update(); e.preventDefault(); return;
     }
-    if(e.key === 'Enter'){ historyEl.textContent = expr; const r=evaluate(expr); expr = (typeof r==='number')?String(r):r; update(); e.preventDefault(); return }
+    if(e.key === 'Enter'){ if(historyEl) historyEl.textContent = expr; const r=evaluate(expr); expr = (typeof r==='number')?String(r):r; update(); e.preventDefault(); return }
     if(e.key === 'Backspace'){ expr = expr.slice(0,-1); update(); e.preventDefault(); return }
     if(e.key === 'c' || e.key === 'C'){ expr=''; update(); }
   });
 
   // expose evaluate for tests
   window.calc = { evaluate };
-  update();
+  if(displayEl) update();
 })();
