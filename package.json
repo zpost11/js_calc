@@ -1,0 +1,12 @@
+{
+  "name": "js_calc",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "test": "jest --forceExit"
+  },
+  "devDependencies": {
+    "jest": "^29.0.0",
+    "jest-environment-jsdom": "^30.2.0"
+  }
+}

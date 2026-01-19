@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width,initial-scale=1" />
+	<title>js_calc</title>
+	<link rel="stylesheet" href="styles.css">
+	<style>
+		/* Minimal inline styles so MVP looks usable before the theme file is added */
+		:root{font-family:system-ui,Segoe UI,Roboto,Arial}
+		body{display:flex;align-items:center;justify-content:center;height:100vh;margin:0;background:#111}
+		.calc{width:360px;background:#0e0e12;border-radius:12px;padding:14px;box-shadow:0 10px 30px rgba(0,0,0,.6)}
+		.display{height:64px;background:#0b0b0d;color:#0ff;padding:10px;border-radius:8px;font-size:24px;display:flex;flex-direction:column;justify-content:center;align-items:flex-end}
+		.small{font-size:12px;opacity:.6}
+		.keys{display:grid;grid-template-columns:repeat(6,1fr);gap:8px;margin-top:12px}
+		button{padding:12px;border-radius:8px;border:0;background:#17171a;color:#fff;font-size:14px;cursor:pointer}
+		button.op{background:#212126}
+		button.func{background:#1a1a2a}
+		button.equal{grid-column:span 2;background:#00bfa5}
+	</style>
+</head>
+<body>
+	<div class="calc" role="application" aria-label="Calculator">
+		<div class="display" id="display">
+			<div class="small" id="history"> </div>
+			<div id="output">0</div>
+		</div>
+
+		<div class="keys" id="keys">
+			<button class="func" data-action="clear">C</button>
+			<button class="func" data-action="back">←</button>
+			<button class="func" data-action="percent">% </button>
+			<button class="func" data-value="(">(</button>
+			<button class="func" data-value=")">)</button>
+			<button class="func" data-action="mc">MC</button>
+
+			<button data-value="7">7</button>
+			<button data-value="8">8</button>
+			<button data-value="9">9</button>
+			<button class="op" data-value="/">÷</button>
+			<button class="op" data-value="*">×</button>
+			<button class="func" data-action="mplus">M+</button>
+
+			<button data-value="4">4</button>
+			<button data-value="5">5</button>
+			<button data-value="6">6</button>
+			<button class="op" data-value="-">−</button>
+			<button class="op" data-value="+">+</button>
+			<button class="func" data-action="mrec">MR</button>
+
+			<button data-value="1">1</button>
+			<button data-value="2">2</button>
+			<button data-value="3">3</button>
+			<button class="func" data-value="^">^</button>
+			<button class="func" data-action="sqrt">√</button>
+			<button class="func" data-action="ln">ln</button>
+
+			<button data-value="0">0</button>
+			<button data-value=".">.</button>
+			<button class="func" data-action="pi">π</button>
+			<button class="func" data-action="exp">exp</button>
+			<button class="func" data-action="log">log</button>
+			<button class="equal" data-action="equals">=</button>
+
+			<button class="func" data-action="sin">sin</button>
+			<button class="func" data-action="cos">cos</button>
+			<button class="func" data-action="tan">tan</button>
+			<button class="func" data-action="asin">asin</button>
+			<button class="func" data-action="acos">acos</button>
+			<button class="func" data-action="atan">atan</button>
+		</div>
+	</div>
+
+	<script src="scripts/calculator.js"></script>
+</body>
+</html>
